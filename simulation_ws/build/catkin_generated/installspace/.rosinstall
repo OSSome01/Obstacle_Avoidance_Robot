@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ossome/obstacle_avoidance/simulation_ws/install/setup.sh

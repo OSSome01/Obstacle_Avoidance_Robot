@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/ossome/obstacle_avoidance/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ossome/obstacle_avoidance/simulation_ws/install -G Unix Makefiles
