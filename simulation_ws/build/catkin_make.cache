@@ -1,2 +1,2 @@
-
+my_worlds:obst_avoidance_robot_description:teleop_twist_keyboard
 -DCATKIN_DEVEL_PREFIX=/home/ossome/obstacle_avoidance/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ossome/obstacle_avoidance/simulation_ws/install -G Unix Makefiles

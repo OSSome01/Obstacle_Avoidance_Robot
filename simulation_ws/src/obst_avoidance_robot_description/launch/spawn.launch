@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <param name="robot_description" command="cat '$(find obst_avoidance_robot_description)/urdf/obst_avoidance_robot.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find obst_avoidance_robot_description)/urdf/obst_avoidance_robot.xacro'" />
  
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>

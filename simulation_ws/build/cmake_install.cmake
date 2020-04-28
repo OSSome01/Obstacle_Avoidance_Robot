@@ -131,6 +131,9 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ossome/obstacle_avoidance/simulation_ws/build/gtest/cmake_install.cmake")
+  include("/home/ossome/obstacle_avoidance/simulation_ws/build/teleop_twist_keyboard/cmake_install.cmake")
+  include("/home/ossome/obstacle_avoidance/simulation_ws/build/my_worlds/cmake_install.cmake")
+  include("/home/ossome/obstacle_avoidance/simulation_ws/build/obst_avoidance_robot_description/cmake_install.cmake")
 
 endif()
 

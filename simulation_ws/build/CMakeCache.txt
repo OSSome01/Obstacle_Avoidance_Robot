@@ -355,6 +355,27 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//Value Computed by CMake
+my_worlds_BINARY_DIR:STATIC=/home/ossome/obstacle_avoidance/simulation_ws/build/my_worlds
+
+//Value Computed by CMake
+my_worlds_SOURCE_DIR:STATIC=/home/ossome/obstacle_avoidance/simulation_ws/src/my_worlds
+
+//Value Computed by CMake
+obst_avoidance_robot_description_BINARY_DIR:STATIC=/home/ossome/obstacle_avoidance/simulation_ws/build/obst_avoidance_robot_description
+
+//Value Computed by CMake
+obst_avoidance_robot_description_SOURCE_DIR:STATIC=/home/ossome/obstacle_avoidance/simulation_ws/src/obst_avoidance_robot_description
+
+//The directory containing a CMake configuration file for rospy.
+rospy_DIR:PATH=/opt/ros/melodic/share/rospy/cmake
+
+//Value Computed by CMake
+teleop_twist_keyboard_BINARY_DIR:STATIC=/home/ossome/obstacle_avoidance/simulation_ws/build/teleop_twist_keyboard
+
+//Value Computed by CMake
+teleop_twist_keyboard_SOURCE_DIR:STATIC=/home/ossome/obstacle_avoidance/simulation_ws/src/teleop_twist_keyboard
+
 
 ########################
 # INTERNAL cache entries
@@ -467,7 +488,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

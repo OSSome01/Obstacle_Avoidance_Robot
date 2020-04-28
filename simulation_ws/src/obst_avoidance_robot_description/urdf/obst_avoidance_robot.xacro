@@ -1,74 +1,26 @@
 <?xml version="1.0" ?>
+<robot name="obst_avoidance_robot" xmlns:xacro="https://www.ros.org/wiki/xacro" >
  
-<robot name="m2wr" xmlns:xacro="https://www.ros.org/wiki/xacro" >
-    
-  <material name="black">
-    <color rgba="0.0 0.0 0.0 1.0"/>
-  </material>
-  <material name="blue">
-    <color rgba="0.203125 0.23828125 0.28515625 1.0"/>
-  </material>
-  <material name="green">
-    <color rgba="0.0 0.8 0.0 1.0"/>
-  </material>
-  <material name="grey">
-    <color rgba="0.2 0.2 0.2 1.0"/>
-  </material>
-  <material name="orange">
-    <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
-  </material>
-  <material name="brown">
-    <color rgba="0.870588235294 0.811764705882 0.764705882353 1.0"/>
-  </material>
-  <material name="red">
-    <color rgba="0.80078125 0.12890625 0.1328125 1.0"/>
-  </material>
-  <material name="white">
-    <color rgba="1.0 1.0 1.0 1.0"/>
-  </material>  
-  
-  <gazebo reference="link_chassis">
-    <material>Gazebo/Orange</material>
-  </gazebo>
-  <gazebo reference="link_left_wheel">
-    <material>Gazebo/Blue</material>
-  </gazebo>
-  <gazebo reference="link_right_wheel">
-    <material>Gazebo/Blue</material>
-  </gazebo>
-
-  <gazebo>
-    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>20</updateRate>
-      <leftJoint>joint_left_wheel</leftJoint>
-      <rightJoint>joint_right_wheel</rightJoint>
-      <wheelSeparation>0.4</wheelSeparation>
-      <wheelDiameter>0.2</wheelDiameter>
-      <torque>0.1</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>link_chassis</robotBaseFrame>
-    </plugin>
-  </gazebo>
-    
+  <!-- include the xacro files-->  
+  <xacro:include filename="$(find obst_avoidance_robot_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find obst_avoidance_robot_description)/urdf/gazebo.xacro" />
+  <xacro:include filename="$(find obst_avoidance_robot_description)/urdf/macro.xacro" />
+ 
+  <!-- Chasis defined here -->
   <link name="link_chassis">
-    <!-- pose and inertial -->
     <pose>0 0 0.1 0 0 0</pose>
-    
     <inertial>
       <mass value="5"/>
       <origin rpy="0 0 0" xyz="0 0 0.1"/>
       <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
     </inertial>
-    
+ 
     <collision name="collision_chassis">
       <geometry>
         <cylinder length="0.05" radius="0.3"/>
       </geometry>
     </collision>
-    
+ 
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -76,10 +28,10 @@
       </geometry>
       <material name="blue"/>
     </visual>
-    
+ 
     <!-- caster front -->
     <collision name="caster_front_collision">
-      <origin rpy=" 0 0 0" xyz="0.2 0 -0.05"/>
+      <origin rpy=" 0 0 0" xyz="0.35 0 -0.05"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -101,75 +53,47 @@
       </geometry>
     </visual>
     </link>
-  
-  <!-- Create wheel right -->  
     
-  <link name="link_right_wheel">    
+ 
+  <!-- Create Right Wheel -->  
+ 
+   <xacro:link_wheel name="link_right_wheel" />
+   <xacro:joint_wheel name="joint_right_wheel"  child="link_right_wheel"  origin_xyz="-0.05 0.3 0"  />
+ 
+ 
+  <!-- Create Left Wheel -->
+ 
+  <xacro:link_wheel name="link_left_wheel" />
+  <xacro:joint_wheel name="joint_left_wheel"   child="link_left_wheel"   origin_xyz="-0.05 -0.3 0"  />  
+
+  <!-- Laser Scanner -->
+
+  <link name="sensor_laser">
     <inertial>
-      <mass value="0.2"/>
-      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-      <inertia ixx="0.00052666666" ixy="0" ixz="0" iyy="0.00052666666" iyz="0" izz="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="3" />
+      <xacro:cylinder_inertia mass="1" r="0.05" l="0.1" />
     </inertial>
-    
-    <collision name="link_right_wheel_collision">
-      <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
+ 
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <cylinder length="0.04" radius="0.1"/>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <material name="white" />
+    </visual>
+ 
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
       </geometry>
     </collision>
-    
-    <visual name="link_right_wheel_visual">
-      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.04" radius="0.1"/>
-      </geometry>      
-    </visual>
-    
   </link>
-    
-  <!--   Joint for right wheel  -->
-  <joint name="joint_right_wheel" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.05 0.15 0"/>
-    <child link="link_right_wheel" />
+ 
+  <joint name="joint_sensor_laser" type="fixed">
+    <origin xyz="0.15 0 0.05" rpy="0 0 0"/>
     <parent link="link_chassis"/>
-    <axis rpy="0 0 0" xyz="0 1 0"/>
-    <limit effort="10000" velocity="1000"/>
-    <joint_properties damping="1.0" friction="1.0" />
-  </joint>  
-    
-  <!-- Left Wheel link -->
-    
-  <link name="link_left_wheel">    
-    <inertial>
-      <mass value="0.2"/>
-      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-      <inertia ixx="0.00052666666" ixy="0" ixz="0" iyy="0.00052666666" iyz="0" izz="0.001"/>
-    </inertial>
-    
-    <collision name="link_left_wheel_collision">
-      <origin rpy="0 1.5707 1.5707" xyz="0 0 0" />
-      <geometry>
-        <cylinder length="0.04" radius="0.1"/>
-      </geometry>
-    </collision>
-    
-    <visual name="link_left_wheel_visual">
-      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.04" radius="0.1"/>
-      </geometry>      
-    </visual>
-    
-  </link>
-    
-  <!--   Joint for right wheel  -->
-  <joint name="joint_left_wheel" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.05 -0.15 0"/>
-    <child link="link_left_wheel" />
-    <parent link="link_chassis"/>
-    <axis rpy="0 0 0" xyz="0 1 0"/>
-    <limit effort="10000" velocity="1000"/>
-    <joint_properties damping="1.0" friction="1.0" />
-  </joint>    
-  
+    <child link="sensor_laser"/>
+  </joint>
 </robot>

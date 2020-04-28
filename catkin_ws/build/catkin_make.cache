@@ -1,2 +1,2 @@
-
+motion_plan
 -DCATKIN_DEVEL_PREFIX=/home/ossome/obstacle_avoidance/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ossome/obstacle_avoidance/catkin_ws/install -G Unix Makefiles

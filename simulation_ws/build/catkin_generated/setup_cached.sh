@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/ossome/obstacle_avoidance/simulation_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/ossome/obstacle_avoidance/simulation_ws/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/ossome/obstacle_avoidance/simulation_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/ossome/obstacle_avoidance/simulation_ws/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/ossome/obstacle_avoidance/simulation_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/ossome/obstacle_avoidance/simulation_ws/devel/share/common-lisp"
 export ROS_PACKAGE_PATH="/home/ossome/obstacle_avoidance/simulation_ws/src:$ROS_PACKAGE_PATH"
