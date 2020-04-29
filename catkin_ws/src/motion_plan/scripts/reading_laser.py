@@ -1,20 +1,21 @@
-import rospy 
+#!/usr/bin/env python 
+import rospy
 from sensor_msgs.msg import LaserScan
  
 def clbk_laser(msg):
     # 720/5 = 144
     regions = [ 
-      min(msg.ranges[0:143]),
-      min(msg.ranges[144:287]),
-      min(msg.ranges[288:431]),
-      min(msg.ranges[432:575]),
-      min(msg.ranges[576:713]),
+      min(msg.ranges[0:143],10),
+      min(msg.ranges[144:287],10),
+      min(msg.ranges[288:431],10),
+      min(msg.ranges[432:575],10),
+      min(msg.ranges[576:713],10),
      ]
-     rospy.loginfo(regions)
+    rospy.loginfo(regions)
  
 def main():
     rospy.init_node('reading_laser')
-    sub= rospy.Subscriber("/m2wr/laser/scan", LaserScan, clbk_laser)
+    sub = rospy.Subscriber("/obst_avoidance_robot/laser/scan", LaserScan, clbk_laser)
  
     rospy.spin()
  
