@@ -1,0 +1,8 @@
+prefix=/home/ossome/obstacle_avoidance/catkin_ws/devel
+
+Name: motion_plan_cpp
+Description: Description of motion_plan_cpp
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -10,6 +10,7 @@ project(motion_plan)
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   rospy
+  roscpp
   sensor_msgs
   std_msgs
 )
