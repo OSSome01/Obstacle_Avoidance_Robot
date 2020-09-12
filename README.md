@@ -13,11 +13,11 @@ This work was done taking reference from [here](https://www.theconstructsim.com/
 1. Clone this repository.
 2. Run `catkin_make` for both `catkin_ws` and `simulation_ws`.
 3. Run `source catkin_ws/devel/setup.bash` and `source simulation_ws/devel/setup.bash`.
-3. Launch your terminal and run the command `roslaunch my_worlds <world_name>.launch`. 
+4. Launch your terminal and run the command `roslaunch my_worlds <world_name>.launch`. 
 This will launch the gazebo enviroment
-4. In another terminal, run the command `roslaunch obst_avoidance_robot_description spawn.launch`. 
-This will load the robot in the environment at origin. It can be spawned at different location by giving additional arguments like `x:=1 y:=2 z:=3.  
-5. In another terminal run `rosrun motion_plan obstacle_avoidance.py`. This will start the robot and obstacle avoidance algorithm.
+5. In another terminal, run the command `roslaunch obst_avoidance_robot_description spawn.launch`. 
+This will load the robot in the environment at origin. It can be spawned at different location by giving additional arguments like `x:=1 y:=2 z:=3`.  
+6. In another terminal run `rosrun motion_plan obstacle_avoidance.py`. This will start the robot and obstacle avoidance algorithm.
 
 ## Video
 
