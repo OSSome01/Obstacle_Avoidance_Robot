@@ -12,7 +12,7 @@ This work was done taking reference from [here](https://www.theconstructsim.com/
 
 1. Clone this repository.
 2. Run `catkin_make` for both `catkin_ws` and `simulation_ws`.
-3. Run `source catkin_make/devel/setup.bash` and `source simulation_ws/devel/setup.bash`.
+3. Run `source catkin_ws/devel/setup.bash` and `source simulation_ws/devel/setup.bash`.
 3. Launch your terminal and run the command `roslaunch my_worlds <world_name>.launch`. 
 This will launch the gazebo enviroment
 4. In another terminal, run the command `roslaunch obst_avoidance_robot_description spawn.launch`. 
